@@ -10,9 +10,12 @@ import ImageView from '../../component/image/ImageView';
 import TextView from '../../component/text/TextView';
 import { StackNavigation } from '../../navigation/StackNavigation';
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { DrawerNavigationProp } from '@react-navigation/drawer';
 
-type PropsType = NativeStackScreenProps<StackNavigation, "Register">
-
+type DrawerNavigationProps = DrawerNavigationProp<StackNavigation>;
+type PropsType = NativeStackScreenProps<StackNavigation, "Register"> & {
+  navigation: DrawerNavigationProps;
+};
 // const Register = () =>{
     const Register: React.FC<PropsType> = (props) => {
     const { navigation } = props;
@@ -63,7 +66,8 @@ type PropsType = NativeStackScreenProps<StackNavigation, "Register">
             Alert.alert("Số điện thoại không hợp lệ");
             return;
         }
-        navigation.navigate("ScreenOTP");
+        navigation.navigate("ScreenOTP", { phoneNumber: valuePhone,name: valueName ,type: false });
+
     }
     return (
         <View>

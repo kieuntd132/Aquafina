@@ -7,12 +7,14 @@ import TextView from '../../component/text/TextView'
 import LinearGradient from 'react-native-linear-gradient'
 import { Colors } from '../../resource/value/Colors'
 import Button from '../../component/button/Button'
-
 import { StackNavigation } from '../../navigation/StackNavigation';
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { DrawerNavigationProp } from '@react-navigation/drawer'
 
-type PropsType = NativeStackScreenProps<StackNavigation, "NotificationOTP">
-
+type DrawerNavigationProps = DrawerNavigationProp<StackNavigation>;
+type PropsType = NativeStackScreenProps<StackNavigation, "NotificationOTP"> & {
+  navigation: DrawerNavigationProps;
+};
 const NotificationOTP: React.FC<PropsType> = (props) => {
     // const NotificationOTP = () => {
     const { navigation } = props;

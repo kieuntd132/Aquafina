@@ -12,15 +12,23 @@ import Button from '../../component/button/Button';
 
 import { StackNavigation } from '../../navigation/StackNavigation';
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { DrawerNavigationProp } from '@react-navigation/drawer';
 
-type PropsType = NativeStackScreenProps<StackNavigation, "ScreenOTP">
-
-const ScreenOTP: React.FC<PropsType>  = (props) => {
-    const { navigation } = props;
-    const textBold = "Một mã OTP vừa được gửi vào số ";
-    const phone = "0943975890";
-    // const boldTexts: string[] = [phone];
-    const boldTexts: string[] = ["0943975890"];
+type DrawerNavigationProps = DrawerNavigationProp<StackNavigation>;
+type PropsType = NativeStackScreenProps<StackNavigation, "ScreenOTP"> & {
+  navigation: DrawerNavigationProps;
+};
+const ScreenOTP: React.FC<PropsType> = (props) => {
+    const { navigation, route } = props;
+    const phoneNumber = route.params?.phoneNumber;
+    const name = route.params?.name;
+    const type = route.params?.type;
+    console.log(type);
+    console.log(name);
+    console.log(phoneNumber);
+    const textBold = "Một mã OTP vừa được gửi vào số " + phoneNumber;
+    const phone = phoneNumber + "";
+    const boldTexts: string[] = [phone];
     const textRed: string[] = ["30 giây"];
     const [display, setDisplay] = useState<"flex" | "none" | undefined>("flex");
     const [displayReSendOPT, setDisplayReSendOPT] = useState<
@@ -29,17 +37,22 @@ const ScreenOTP: React.FC<PropsType>  = (props) => {
     const [colorOTP, setColorOTP] = useState<string>(Colors.BLUE_TEXT);
     const [borderColorOTP, setBorderColorOTP] = useState<string>(Colors.TEXT_GRAY);
 
-    const codeOTP = "1234";
+    const codeOTP = "3845";
     const [code, setCode] = useState<string>("");
     const handleCheckOTP = () => {
-        // if (code != codeOTP) {
-        //     setDisplay("none");
-        //     setColorOTP(Colors.RED);
-        //     setBorderColorOTP(Colors.RED);
-        //     setDisplayReSendOPT("flex");
-        //     return false;
-        // }
-        navigation.navigate("NotificationOTP");
+        if (code != codeOTP) {
+            setDisplay("none");
+            setColorOTP(Colors.RED);
+            setBorderColorOTP(Colors.RED);
+            setDisplayReSendOPT("flex");
+            return false;
+        }
+        if (type == true) {
+            navigation.navigate("Home");
+          } else if (type == false) {
+           
+            navigation.navigate("NotificationOTP");
+          }
     };
 
     const handleResendOTP = () => {
@@ -81,15 +94,15 @@ const ScreenOTP: React.FC<PropsType>  = (props) => {
                 styleView={{ marginTop: 10 }}
             />
 
-            {/* <View style={styles.viewOTP}>
+            <View style={styles.viewOTP}>
                 <OTPInputView
                     style={{ width: "100%", height: 50 }}
                     pinCount={4}
-                    autoFocusOnLoad
-                    codeInputFieldStyle={[
+                    autoFocusOnLoad = {false}
+                    codeInputFieldStyle={StyleSheet.flatten([
                         styles.underlineStyleBase,
                         { color: colorOTP, borderColor: borderColorOTP },
-                    ]}
+                    ])}
                     code={code}
                     onCodeChanged={(code) => {
                         setCode(code);
@@ -101,19 +114,8 @@ const ScreenOTP: React.FC<PropsType>  = (props) => {
                     placeholderTextColor={Colors.TEXT_GRAY}
                     editable={true}
                 />
-            </View> */}
-            {/* <View style={styles.viewOTP}>
-                <OTPInputView
-                    style={{ width: "100%", height: 50 }}
-                    pinCount={4}
-                    // code={code}
-                    // onCodeChanged={setCode}
-                    autoFocusOnLoad
-                    placeholderCharacter="|"
-                    codeInputFieldStyle={styles.underlineStyleBase}
-                    codeInputHighlightStyle={styles.underlineStyleHighLighted}
-                />
-            </View> */}
+            </View>
+
             <LinearGradient
                 style={{
                     marginTop: Dimensions.get("window").height * 0.234,
