@@ -14,10 +14,10 @@ import { DrawerNavigationProp } from '@react-navigation/drawer';
 
 type DrawerNavigationProps = DrawerNavigationProp<StackNavigation>;
 type PropsType = NativeStackScreenProps<StackNavigation, "Register"> & {
-  navigation: DrawerNavigationProps;
+    navigation: DrawerNavigationProps;
 };
 // const Register = () =>{
-    const Register: React.FC<PropsType> = (props) => {
+const Register: React.FC<PropsType> = (props) => {
     const { navigation } = props;
     const [valueName, setValueName] = useState("");
     const [valuePhone, setValuePhone] = useState("");
@@ -66,8 +66,11 @@ type PropsType = NativeStackScreenProps<StackNavigation, "Register"> & {
             Alert.alert("Số điện thoại không hợp lệ");
             return;
         }
-        navigation.navigate("ScreenOTP", { phoneNumber: valuePhone,name: valueName ,type: false });
+        navigation.navigate("ScreenOTP", { phoneNumber: valuePhone, name: valueName, type: false });
 
+    }
+    const goHome = () => {
+        navigation.navigate("Home");
     }
     return (
         <View>
@@ -76,8 +79,7 @@ type PropsType = NativeStackScreenProps<StackNavigation, "Register"> & {
                 iconLeft={ICON_HOME}
                 iconRight={ICON_HOME}
                 styleIconRight={{ opacity: 0 }}
-            // eventLeft={onPressIconLeft}
-            // eventRight={onPressIconRight}
+                eventLeft={goHome}
             />
             <ImageView
                 uri={IMG_TITLE}

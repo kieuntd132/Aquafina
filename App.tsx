@@ -3,7 +3,7 @@ import React from 'react'
 // import Test from './src/presentation/container/Login/Test'
 import { NavigationContainer } from '@react-navigation/native'
 import StackNavigation from './src/presentation/navigation/StackNavigation'
-import MyDrawer from './src/presentation/navigation/MyDrawer'
+import DrawerNavigation from './src/presentation/navigation/DrawerNavigation'
 
 
 const App = () => {
@@ -11,8 +11,8 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <StackNavigation/>
-      {/* <MyDrawer/> */}
+      {/* <StackNavigation/> */}
+      <DrawerNavigation/>
     </NavigationContainer>
   )
 }

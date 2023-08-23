@@ -20,4 +20,5 @@ export const ICON_MENU_3_FOCUS =('https://firebasestorage.googleapis.com/v0/b/aq
 export const ICON_MENU_4_FOCUS =('https://firebasestorage.googleapis.com/v0/b/aquafina-27d2b.appspot.com/o/icon_menu_4_focus.png?alt=media&token=d1455b95-a54f-4610-a97d-60221d518cd9')
 export const ICON_MENU_5_FOCUS =('https://firebasestorage.googleapis.com/v0/b/aquafina-27d2b.appspot.com/o/icon_ranking_focus.png?alt=media&token=69298657-fe38-4fa6-8935-558220f3e17c')
 export const ICON_LOGIN =('https://firebasestorage.googleapis.com/v0/b/aquafina-27d2b.appspot.com/o/icon_login.png?alt=media&token=24cf888e-eac1-4726-988c-9c8f62ee1259')
+export const ICON_LOGOUT =('https://firebasestorage.googleapis.com/v0/b/aquafina-27d2b.appspot.com/o/icon_logout.png?alt=media&token=00737117-62d3-4afc-9753-8495ba6a9487')
 // export const ICON_MENU_5_FOCUS =('')

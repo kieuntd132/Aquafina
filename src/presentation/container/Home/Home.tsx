@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Header from '../../component/header/Header'
-import { ICON_AQUAFINA, ICON_HOME, ICON_LOGIN, ICON_MENU } from '../../../../assets'
+import { ICON_AQUAFINA, ICON_LOGIN, ICON_MENU } from '../../../../assets'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { StackNavigation } from '../../navigation/StackNavigation'
 import { DrawerNavigationProp } from '@react-navigation/drawer'
@@ -13,20 +13,24 @@ type PropsType = NativeStackScreenProps<StackNavigation, "Home"> & {
 
 const Home: React.FC<PropsType> = (props) => {
   const { navigation } = props;
-  const showDrawerNavigator = () => {
+  const showDrawer = () => {
     navigation.openDrawer();
   };
   const goLogin = () => {
       navigation.navigate("Login");
   };
+  const goHome = () => {
+    navigation.navigate("Home");
+};
   return (
     <View>
       <Header
         iconCenter={ICON_AQUAFINA}
         iconLeft={ICON_MENU}
         iconRight={ICON_LOGIN}
-        eventLeft={showDrawerNavigator}
+        eventLeft={showDrawer}
         eventRight={goLogin}
+        eventCenter={goHome}
       />
     </View>
   )

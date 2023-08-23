@@ -62,6 +62,9 @@ const ScreenOTP: React.FC<PropsType> = (props) => {
         setDisplayReSendOPT("none");
         setCode("");
     };
+    const goHome = () => {
+        navigation.navigate("Home");
+    }
     return (
         <View>
             <Header
@@ -69,6 +72,7 @@ const ScreenOTP: React.FC<PropsType> = (props) => {
                 iconLeft={ICON_HOME}
                 iconRight={ICON_HOME}
                 styleIconRight={{ opacity: 0 }}
+                eventLeft={goHome}
             />
             <ImageView
                 uri={IMG_TITLE}

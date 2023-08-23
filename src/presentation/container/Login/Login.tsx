@@ -54,7 +54,7 @@ const Login: React.FC<PropsType> = (props) => {
     };
 
     const goHome = () => {
-        // navigation.navigate("Home");
+        navigation.navigate("Home");
     };
     return (
         <View>

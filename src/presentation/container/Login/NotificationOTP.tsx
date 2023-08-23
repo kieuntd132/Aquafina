@@ -21,6 +21,9 @@ const NotificationOTP: React.FC<PropsType> = (props) => {
     const goLogin = async () => {
         navigation.navigate("Login");
     }
+    const goHome = async () => {
+        navigation.navigate("Home");
+    }
     return (
         <View>
             <Header
@@ -28,6 +31,7 @@ const NotificationOTP: React.FC<PropsType> = (props) => {
                 iconLeft={ICON_HOME}
                 iconRight={ICON_HOME}
                 styleIconRight={{ opacity: 0 }}
+                eventLeft={goHome}
             />
             <ImageView
                 uri={IMG_TITLE}
