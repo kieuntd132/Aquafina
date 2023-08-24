@@ -10,5 +10,6 @@ export const Colors = {
     GREY_5:'#707172',
     RED:'#FA4238',
     BLUE_200:'#99B5E3',
-    BLUE_400:'#336CC8'
+    BLUE_400:'#336CC8',
+    BLACK:'rgba(41, 43, 46, 1)',
 };

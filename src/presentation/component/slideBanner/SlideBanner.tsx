@@ -3,23 +3,21 @@ import React from 'react'
 import Swiper from 'react-native-swiper';
 import Button from '../button/Button';
 import { BACKGROUND_BUTTON_BLUE } from '../../../../assets';
-interface Banner {
-    key?: string;
-    image?: string;
-    screen?: string | undefined;
-}
+import { Banner } from '../../../domain/entity/Banner';
 interface SlideBannerProps {
     data: Banner[];
     onClick: (screen: string) => void;
+    checkLogin?: boolean;
 }
 
 const SlideBanner: React.FC<SlideBannerProps> = (props) => {
     const { data } = props;
-
+    // const  {data, checkLogin, onClick} = props;
     return (
         <View style={styles.container}>
-            <Swiper loop autoplay>
-                {data.map((item: Banner) => (
+            {/* checkLogin ? ( */}
+            <Swiper loop={true} autoplay={true}>
+                {data.map((item) => (
                     <View key={item.key} style={styles.slide}>
                         <Image source={{ uri: item.image }} style={styles.image} />
                         <Button
@@ -35,6 +33,15 @@ const SlideBanner: React.FC<SlideBannerProps> = (props) => {
                     </View>
                 ))}
             </Swiper>
+            {/* ) : (
+            <Swiper loop={true} autoplay={true} showsPagination={false}>
+                {data.map((item) => (
+                    <View key={item.key} style={styles.slide}>
+                        <Image source={{ uri: item.image }} style={styles.image} />
+                    </View>
+                ))}
+            </Swiper>
+            ) */}
         </View>
     );
 }
@@ -57,6 +64,7 @@ const styles = StyleSheet.create({
         bottom: 50,
         width: 122,
     },
+
 });
 
 export default SlideBanner;

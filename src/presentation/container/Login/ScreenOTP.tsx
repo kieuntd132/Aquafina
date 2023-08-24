@@ -13,13 +13,16 @@ import Button from '../../component/button/Button';
 import { StackNavigation } from '../../navigation/StackNavigation';
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { DrawerNavigationProp } from '@react-navigation/drawer';
+import { AppContext } from '../../shared-state/appContext/AppContext';
 
 type DrawerNavigationProps = DrawerNavigationProp<StackNavigation>;
 type PropsType = NativeStackScreenProps<StackNavigation, "ScreenOTP"> & {
-  navigation: DrawerNavigationProps;
+    navigation: DrawerNavigationProps;
 };
 const ScreenOTP: React.FC<PropsType> = (props) => {
     const { navigation, route } = props;
+    const { setLoggedIn, setDataUser, isLoggedIn, setKey } =
+    React.useContext(AppContext);
     const phoneNumber = route.params?.phoneNumber;
     const name = route.params?.name;
     const type = route.params?.type;
@@ -49,10 +52,9 @@ const ScreenOTP: React.FC<PropsType> = (props) => {
         }
         if (type == true) {
             navigation.navigate("Home");
-          } else if (type == false) {
-           
+        } else if (type == false) {
             navigation.navigate("NotificationOTP");
-          }
+        }
     };
 
     const handleResendOTP = () => {
@@ -73,6 +75,7 @@ const ScreenOTP: React.FC<PropsType> = (props) => {
                 iconRight={ICON_HOME}
                 styleIconRight={{ opacity: 0 }}
                 eventLeft={goHome}
+                checkLogin={true}
             />
             <ImageView
                 uri={IMG_TITLE}
@@ -102,7 +105,7 @@ const ScreenOTP: React.FC<PropsType> = (props) => {
                 <OTPInputView
                     style={{ width: "100%", height: 50 }}
                     pinCount={4}
-                    autoFocusOnLoad = {false}
+                    autoFocusOnLoad={false}
                     codeInputFieldStyle={StyleSheet.flatten([
                         styles.underlineStyleBase,
                         { color: colorOTP, borderColor: borderColorOTP },

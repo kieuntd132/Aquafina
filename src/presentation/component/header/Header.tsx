@@ -1,21 +1,22 @@
 import { Dimensions, Image, ImageStyle, Pressable, StyleProp, StyleSheet, TextProps, View, ViewStyle } from 'react-native'
 import React from 'react'
+import { ICON_LOGIN, ICON_LOGOUT } from '../../../../assets';
 
 export interface HeaderProps extends TextProps {
     iconLeft: string,
     iconCenter: string,
-    iconRight: string,
+    iconRight?: string,
     eventLeft?: () => void,
     eventCenter?: () => void,
     eventRight?: () => void,
     styleIconLeft?: StyleProp<ImageStyle>,
     styleIconCenter?: StyleProp<ImageStyle>,
     styleIconRight?: StyleProp<ImageStyle>,
-
+    checkLogin?: boolean,
 };
 
 const Header: React.FC<HeaderProps> = (props) => {
-    const { iconLeft, iconCenter, iconRight, eventLeft, eventCenter, eventRight, styleIconLeft, styleIconCenter, styleIconRight} = props
+    const { iconLeft, iconCenter, iconRight, eventLeft, eventCenter, eventRight, styleIconLeft, styleIconCenter, styleIconRight, checkLogin} = props
 
     const EventLeft = () => {
         if (iconLeft) {
@@ -41,7 +42,9 @@ const Header: React.FC<HeaderProps> = (props) => {
         if (iconRight) {
             return (
                 <Pressable onPress={eventRight}>
-                    <Image source={{ uri: iconRight }} style={[styles.icon, styleIconRight]} />
+                    <Image 
+                    source={checkLogin ? { uri: ICON_LOGOUT } : { uri: ICON_LOGIN }}
+                    style={[styles.icon, styleIconRight]} />
                 </Pressable>
             );
         }

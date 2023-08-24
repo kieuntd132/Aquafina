@@ -11,14 +11,15 @@ import TextView from '../../component/text/TextView';
 import { StackNavigation } from '../../navigation/StackNavigation';
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { DrawerNavigationProp } from '@react-navigation/drawer';
+import { AppContext } from '../../shared-state/appContext/AppContext';
 
 type DrawerNavigationProps = DrawerNavigationProp<StackNavigation>;
 type PropsType = NativeStackScreenProps<StackNavigation, "Register"> & {
     navigation: DrawerNavigationProps;
 };
-// const Register = () =>{
 const Register: React.FC<PropsType> = (props) => {
     const { navigation } = props;
+    const { isLoggedIn } = React.useContext(AppContext);
     const [valueName, setValueName] = useState("");
     const [valuePhone, setValuePhone] = useState("");
     const [fontWeight, setFontWeight] = useState('500');
@@ -80,6 +81,8 @@ const Register: React.FC<PropsType> = (props) => {
                 iconRight={ICON_HOME}
                 styleIconRight={{ opacity: 0 }}
                 eventLeft={goHome}
+                checkLogin={true}
+
             />
             <ImageView
                 uri={IMG_TITLE}

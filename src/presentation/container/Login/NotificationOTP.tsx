@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet, Text, View } from 'react-native'
+import { Dimensions, StyleSheet, View } from 'react-native'
 import React from 'react'
 import Header from '../../component/header/Header'
 import { BACKGROUND_BUTTON_BLUE, ICON_AQUAFINA, ICON_HOME, IMG_BOTTOM_LOGIN, IMG_TITLE } from '../../../../assets'
@@ -10,13 +10,14 @@ import Button from '../../component/button/Button'
 import { StackNavigation } from '../../navigation/StackNavigation';
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { DrawerNavigationProp } from '@react-navigation/drawer'
+import { AppContext } from '../../shared-state/appContext/AppContext'
 
 type DrawerNavigationProps = DrawerNavigationProp<StackNavigation>;
 type PropsType = NativeStackScreenProps<StackNavigation, "NotificationOTP"> & {
-  navigation: DrawerNavigationProps;
+    navigation: DrawerNavigationProps;
 };
 const NotificationOTP: React.FC<PropsType> = (props) => {
-    // const NotificationOTP = () => {
+    const { isLoggedIn } = React.useContext(AppContext);
     const { navigation } = props;
     const goLogin = async () => {
         navigation.navigate("Login");
@@ -32,6 +33,7 @@ const NotificationOTP: React.FC<PropsType> = (props) => {
                 iconRight={ICON_HOME}
                 styleIconRight={{ opacity: 0 }}
                 eventLeft={goHome}
+                checkLogin={true}
             />
             <ImageView
                 uri={IMG_TITLE}

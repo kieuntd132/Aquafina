@@ -1,5 +1,6 @@
 import { ImageBackground, Pressable, StyleProp, StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native'
 import React from 'react'
+import { Colors } from '../../resource/value/Colors';
 export type ButtonProps = {
     title: string;
     stylePressable?: StyleProp<ViewStyle>;
@@ -54,6 +55,7 @@ const styles = StyleSheet.create({
         fontFamily: 'SVN-Gotham',
         fontSize: 14,
         fontWeight: '700',
-        lineHeight: 16.8
+        lineHeight: 16.8,
+        color: Colors.WHITE,
     }
 })

@@ -11,14 +11,15 @@ import TextView from '../../component/text/TextView';
 import { StackNavigation } from '../../navigation/StackNavigation';
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { DrawerNavigationProp } from '@react-navigation/drawer';
+import { AppContext } from '../../shared-state/appContext/AppContext';
 
 type DrawerNavigationProps = DrawerNavigationProp<StackNavigation>;
 type PropsType = NativeStackScreenProps<StackNavigation, "Login"> & {
-  navigation: DrawerNavigationProps;
+    navigation: DrawerNavigationProps;
 };
 const Login: React.FC<PropsType> = (props) => {
-    // const Login = () => {
     const { navigation } = props;
+    const { isLoggedIn } = React.useContext(AppContext);
     const [value, setValue] = useState("");
     const [fontWeight, setFontWeight] = useState('500');
     const [colors, setColors] = useState('#AEB1B5');
@@ -45,7 +46,6 @@ const Login: React.FC<PropsType> = (props) => {
             Alert.alert("Số điện thoại phải có 10 chữ số");
             return;
         }
-        // navigation.navigate("ScreenOTP");
         navigation.navigate("ScreenOTP", { phoneNumber: value, type: true });
     };
 
@@ -64,6 +64,7 @@ const Login: React.FC<PropsType> = (props) => {
                 iconRight={ICON_HOME}
                 styleIconRight={{ opacity: 0 }}
                 eventLeft={goHome}
+                checkLogin={true}
             />
             <ImageView
                 uri={IMG_TITLE}

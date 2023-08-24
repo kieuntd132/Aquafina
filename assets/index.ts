@@ -26,7 +26,7 @@ export const ICON_YOUTUBE =('https://firebasestorage.googleapis.com/v0/b/aquafin
 export const ICON_WARNING =('https://firebasestorage.googleapis.com/v0/b/aquafina-27d2b.appspot.com/o/warning-2.png?alt=media&token=0fff3615-395a-4236-a6eb-aade79fc52cd')
 export const BG_FOOTER =('https://firebasestorage.googleapis.com/v0/b/aquafina-27d2b.appspot.com/o/BACKGROUND_ITEM.png?alt=media&token=0b2726e8-2c91-4d70-a93b-2eca6da5cafd')
 export const BG_SUMBOTTLE =('https://firebasestorage.googleapis.com/v0/b/aquafina-27d2b.appspot.com/o/bg_sumBottle.png?alt=media&token=feb83ec4-2f51-47a8-8ac9-cc1ff88c3094')
-// export const ICON_MENU_5_FOCUS =('')
+export const IMG_MAP =('https://firebasestorage.googleapis.com/v0/b/aquafina-27d2b.appspot.com/o/pure%20coin.png?alt=media&token=349e44a3-79c2-41c7-b5d0-91df7bbc0099')
 // export const ICON_MENU_5_FOCUS =('')
 // export const ICON_MENU_5_FOCUS =('')
 // export const ICON_MENU_5_FOCUS =('')

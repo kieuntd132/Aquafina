@@ -7,10 +7,11 @@ import GreenMap from '../container/Home/GreenMap';
 import GreenBonusPoint from '../container/Home/GreenBonusPoint';
 import Charts from '../container/Home/Charts';
 import CustomDrawerTop from './CustomDrawerTop';
-import { ICON_MENU1, ICON_MENU2, ICON_MENU3, ICON_MENU4, ICON_MENU5, ICON_MENU_1_FOCUS, ICON_MENU_2_FOCUS, ICON_MENU_3_FOCUS, ICON_MENU_4_FOCUS, ICON_MENU_5_FOCUS } from '../../../assets';
+import { ICON_AVATAR, ICON_MENU1, ICON_MENU2, ICON_MENU3, ICON_MENU4, ICON_MENU5, ICON_MENU_1_FOCUS, ICON_MENU_2_FOCUS, ICON_MENU_3_FOCUS, ICON_MENU_4_FOCUS, ICON_MENU_5_FOCUS } from '../../../assets';
 import { Image, StyleSheet } from 'react-native';
 import { Colors } from '../resource/value/Colors';
 import StackNavigation from './StackNavigation';
+import { AppContext } from '../shared-state/appContext/AppContext';
 
 type DrawerParamList = {
   "Thế Giới Xanh": undefined;
@@ -24,8 +25,14 @@ type DrawerParamList = {
 const Drawer = createDrawerNavigator<DrawerParamList>();
 
 const DrawerNavigation: React.FC = () => {
+  const { dataUser, isLoggedIn } = React.useContext(AppContext);
   return (
-      <Drawer.Navigator drawerContent={(props) => (<CustomDrawerTop{...props}/>)} 
+      <Drawer.Navigator drawerContent={(props) => (<CustomDrawerTop
+        checkLogin={isLoggedIn}
+            imageAvatar={dataUser.avatar ? dataUser.avatar : ICON_AVATAR}
+            textAccount={dataUser.name ? dataUser.name : "User is not signin"}
+            {...props}
+        />)} 
       initialRouteName="StackNavigation"
       screenOptions={({ route }) => ({
         headerShown: false,
@@ -49,9 +56,16 @@ const DrawerNavigation: React.FC = () => {
           );
         },
         drawerLabelStyle: styles.drawerLabel,
-        drawerActiveTintColor: Colors.BLUE_TEXT,
-        drawerInactiveTintColor: Colors.GREY_5,
-        drawerActiveBackgroundColor: Colors.WHITE
+          drawerActiveTintColor: Colors.BLUE_TEXT,
+          drawerInactiveTintColor: Colors.GREY_5,
+          drawerActiveBackgroundColor: "transparent",
+          drawerInactiveBackgroundColor: "transparent",
+          drawerStyle: {
+            backgroundColor: Colors.WHITE,
+          },
+          drawerType: "slide",
+          drawerPosition: "left",
+          swipeEdgeWidth: 50,
       })}>
         <Drawer.Screen name="Thế Giới Xanh" component={GreenWorld} />
         <Drawer.Screen name="Quà Tặng Xanh" component={GreenGift} />
