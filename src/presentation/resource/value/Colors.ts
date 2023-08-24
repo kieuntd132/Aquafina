@@ -9,5 +9,6 @@ export const Colors = {
     BLUE_TEXT:'#0047BA',
     GREY_5:'#707172',
     RED:'#FA4238',
-    
+    BLUE_200:'#99B5E3',
+    BLUE_400:'#336CC8'
 };

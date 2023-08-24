@@ -31,11 +31,11 @@ export type StackNavigation = {
     ScreenOTP: ScreenOTPProps | undefined;
     NotificationOTP: NotificationOTPProps | undefined;
     Home: MainScreenProps | undefined;
-    "Thế giới xanh": GreenWorldProps | undefined;
-    "Quà tặng xanh": GreenGiftProps | undefined;
-    "Điểm thưởng xanh": GreenBonusPointsProps | undefined;
-    "Bản đồ xanh": GreenMapProps | undefined;
-    "Bảng xếp hạng": ChartsProps | undefined;
+    "Thế Giới Xanh": GreenWorldProps | undefined;
+    "Quà Tặng Xanh": GreenGiftProps | undefined;
+    "Điểm Thưởng Xanh": GreenBonusPointsProps | undefined;
+    "Bản Đồ Xanh": GreenMapProps | undefined;
+    "Bảng Xếp Hạng": ChartsProps | undefined;
 }
 const StackNavigation = () => {
     return (
@@ -49,11 +49,11 @@ const StackNavigation = () => {
             <Stack.Screen name="ScreenOTP" component={ScreenOTP} />
             <Stack.Screen name="NotificationOTP" component={NotificationOTP} />
             <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="Thế giới xanh" component={GreenWorld} />
-            <Stack.Screen name="Bản đồ xanh" component={GreenMap} />
-            <Stack.Screen name="Quà tặng xanh" component={GreenGift} />
-            <Stack.Screen name="Điểm thưởng xanh" component={GreenBonusPoint} />
-            <Stack.Screen name="Bảng xếp hạng" component={Charts} />
+            <Stack.Screen name="Thế Giới Xanh" component={GreenWorld} />
+            <Stack.Screen name="Bản Đồ Xanh" component={GreenMap} />
+            <Stack.Screen name="Quà Tặng Xanh" component={GreenGift} />
+            <Stack.Screen name="Điểm Thưởng Xanh" component={GreenBonusPoint} />
+            <Stack.Screen name="Bảng Xếp Hạng" component={Charts} />
         </Stack.Navigator>
     )
 }
