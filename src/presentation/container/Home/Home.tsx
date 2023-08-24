@@ -55,21 +55,21 @@ const Home: React.FC<PropsType> = (props) => {
   };
 
   const goToScreenChart = () => {
-    if (isLoggedIn) {
+    // if (isLoggedIn) {
       navigation.navigate("Bảng Xếp Hạng");
       scrollToTop();
-    } else {
+    // } else {
       // setModalVisible(true);
-    }
+    // }
   };
 
   const goToScreenPoints = () => {
-    if (isLoggedIn) {
+    // if (isLoggedIn) {
       navigation.navigate("Điểm Thưởng Xanh");
       scrollToTop();
-    } else {
+    // } else {
       // setModalVisible(true);
-    }
+    // }
   };
 
   const goToScreenDescriptionWarning = () => {

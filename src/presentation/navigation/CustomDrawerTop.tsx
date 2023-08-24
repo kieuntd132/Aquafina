@@ -24,20 +24,36 @@ const CustomDrawerTop: React.FC<CustomDrawerContentProps> = (props) => {
   const filteredRoutes = state.routes.filter(
     (route: any) => !hiddenItems.includes(route.name)
   );
+  // const handleItemPress = (route: string) => {
+  //   if (route === "Điểm Thưởng Xanh") {
+  //     // Xử lý logic trước khi chuyển hướng đến màn hình hạn chế
+  //     if (checkLogin) {
+  //       props.navigation.navigate(route);
+  //     } else {
+  //       // setModalVisible(true);
+  //     }
+  //   } else if (route === "Bảng Xếp Hạng") {
+  //     if (checkLogin) {
+  //       props.navigation.navigate(route);
+  //     } else {
+  //       // setModalVisible(true);
+  //     }
+  //   } else {
+  //     // Chuyển hướng đến các màn hình khác
+  //     props.navigation.navigate(route);
+  //   }
+  // };
   const handleItemPress = (route: string) => {
     if (route === "Điểm Thưởng Xanh") {
       // Xử lý logic trước khi chuyển hướng đến màn hình hạn chế
-      if (checkLogin) {
+      
         props.navigation.navigate(route);
-      } else {
-        // setModalVisible(true);
-      }
+      
+      
     } else if (route === "Bảng Xếp Hạng") {
-      if (checkLogin) {
+      
         props.navigation.navigate(route);
-      } else {
-        // setModalVisible(true);
-      }
+      
     } else {
       // Chuyển hướng đến các màn hình khác
       props.navigation.navigate(route);
