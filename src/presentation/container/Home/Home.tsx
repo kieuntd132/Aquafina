@@ -10,7 +10,10 @@ import SlideBanner from '../../component/slideBanner/SlideBanner'
 import SumBottle from '../../component/sumBottle/SumBottle'
 import Address from '../../component/address/Address'
 import { dataBanner } from '../../../data/dataBanner'
+import { dataRating } from '../../../data/dataRating'
 import { AppContext } from '../../shared-state/appContext/AppContext'
+import Rating from '../../component/rating/Rating'
+import { dataRatingUser } from '../../../data/dataRatingUser'
 
 type DrawerNavigationProps = DrawerNavigationProp<StackNavigation>;
 type PropsType = NativeStackScreenProps<StackNavigation, "Home"> & {
@@ -105,6 +108,18 @@ const Home: React.FC<PropsType> = (props) => {
           checkLogin={isLoggedIn}
         />
         <SumBottle sumAqua={200000} sumOther={100000} />
+        <Rating
+              checkLogin={isLoggedIn}
+              data={dataRating}
+              dataUser={dataRatingUser}
+              type={true}
+              onPressSignIn={() => {
+                navigation.navigate("Login");
+              }}
+              onPress={() => {
+                navigation.navigate("Bảng Xếp Hạng");
+              }}
+            />
         <Address onPress={goToScreenMap} uri={IMG_MAP} checkType={false} />
         <FooterMenu
           onClick1={goToScreenGreenWorld}
