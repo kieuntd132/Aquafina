@@ -71,4 +71,5 @@ export const BG_STATIS_1 =('https://firebasestorage.googleapis.com/v0/b/aquafina
 export const IMG_HP =('https://firebasestorage.googleapis.com/v0/b/aquafina-27d2b.appspot.com/o/img_hp.png?alt=media&token=38207662-4d85-4997-977e-c0c99094521a')
 export const IMG_AQUAFINA =('https://firebasestorage.googleapis.com/v0/b/aquafina-27d2b.appspot.com/o/chai_aquafina.png?alt=media&token=294a87c3-7fef-4bbb-b379-882ebe621371')
 export const IMG_OTHER =('https://firebasestorage.googleapis.com/v0/b/aquafina-27d2b.appspot.com/o/chai_other.png?alt=media&token=c3afe372-8d70-4cac-a257-b9e0e0fd3a0a')
+export const WARNING_2 =('https://firebasestorage.googleapis.com/v0/b/aquafina-27d2b.appspot.com/o/warning.png?alt=media&token=592b33c7-dd31-45f8-a2e7-04b4bd49de2e')
 // export const MU =('')

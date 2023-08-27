@@ -88,7 +88,7 @@ const Home: React.FC<PropsType> = (props) => {
     setModalVisibleSignOut(!modalVisibleSignOut);
   };
   const goToScreenDescriptionWarning = () => {
-    // navigation.navigate("WarningDescriptionScreen");
+    navigation.navigate("WarningScreen");
     scrollToTop();
   };
   const handleClick = (screen: any) => {

@@ -49,12 +49,10 @@ const styles = StyleSheet.create({
         fontFamily: 'SVN-Gotham',
         fontSize: 12,
         fontWeight:'700',
-        lineHeight:14.4,
     },
     text: {
         fontFamily: 'SVN-Gotham',
         fontSize: 12,
         fontWeight:'400',
-        lineHeight:14.4,
     },
 });

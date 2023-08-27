@@ -10,6 +10,8 @@ import GreenGift from "../container/Home/GreenGift";
 import GreenBonusPoint from "../container/Home/GreenBonusPoint";
 import Charts from "../container/Home/Charts";
 import RulesScreen from "../container/Home/RulesScreen";
+import Warning from "../container/Warning/Warning";
+import DescriptionWarning from "../container/Warning/DescriptionWarning";
 
 const Stack = createNativeStackNavigator<StackNavigation>();
 type LoginProps = {};
@@ -62,11 +64,11 @@ const StackNavigation = () => {
             <Stack.Screen name="Quà Tặng Xanh" component={GreenGift} />
             <Stack.Screen name="Điểm Thưởng Xanh" component={GreenBonusPoint} />
             <Stack.Screen name="Bảng Xếp Hạng" component={Charts} />
-            {/* <Stack.Screen name="WarningScreen" component={Warning} /> */}
-            {/* <Stack.Screen
+            <Stack.Screen name="WarningScreen" component={Warning} />
+            <Stack.Screen
                 name="WarningDescriptionScreen"
                 component={DescriptionWarning}
-            /> */}
+            />
             <Stack.Screen name="RulesScreen" component={RulesScreen} />
         </Stack.Navigator>
     )

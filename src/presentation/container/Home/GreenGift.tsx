@@ -97,7 +97,7 @@ const GreenGift: React.FC<PropsType> = (props) => {
   // };
 
   const goToScreenDescriptionWarning = () => {
-    // navigation.navigate("WarningDescriptionScreen");
+    navigation.navigate("WarningScreen");
     scrollToTop();
   };
 
