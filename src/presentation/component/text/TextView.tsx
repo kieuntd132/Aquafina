@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
     textStyle: {
         fontFamily: 'SVN-Gotham',
         fontWeight:'bold',
-        lineHeight:26.4,
         textTransform: "uppercase",
         color: Colors.BLUE_TEXT,
         fontSize: 22,

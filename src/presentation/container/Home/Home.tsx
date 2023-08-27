@@ -1,5 +1,5 @@
-import { StyleSheet, ScrollView, View } from 'react-native'
-import React, { useContext } from 'react'
+import { StyleSheet, ScrollView, View, Modal } from 'react-native'
+import React, { useContext, useRef, useState, useEffect } from 'react'
 import Header from '../../component/header/Header'
 import { ICON_AQUAFINA, ICON_LOGIN, ICON_MENU, IMG_MAP } from '../../../../assets'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
@@ -14,6 +14,12 @@ import { dataRating } from '../../../data/dataRating'
 import { AppContext } from '../../shared-state/appContext/AppContext'
 import Rating from '../../component/rating/Rating'
 import { dataRatingUser } from '../../../data/dataRatingUser'
+import Carousel from '../../component/carousel/Carousel'
+import DialogStatistical from '../../component/dialog/DialogStatistical'
+import DialogLogIn from '../../component/dialog/DialogLogIn'
+import DialogLogOut from '../../component/dialog/DialogLogOut'
+import { User } from '../../../domain/entity/User'
+
 
 type DrawerNavigationProps = DrawerNavigationProp<StackNavigation>;
 type PropsType = NativeStackScreenProps<StackNavigation, "Home"> & {
@@ -24,18 +30,25 @@ const Home: React.FC<PropsType> = (props) => {
   const { navigation } = props;
   const { isLoggedIn, setDataUser, setLoggedIn, key, dataUser } =
     useContext(AppContext);
+  const [modalVisibleSignOut, setModalVisibleSignOut] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisibleStatistical, setModalVisibleStatistical] = useState(false);
   const showDrawer = () => {
     navigation.openDrawer();
   };
   const goLogin = () => {
-    navigation.navigate("Login");
+    if (isLoggedIn) {
+      setModalVisibleSignOut(true);
+    } else {
+      navigation.navigate("Login");
+    }
   };
   const goHome = () => {
     navigation.navigate("Home");
     scrollToTop();
   };
 
-  const scrollViewRef = React.useRef<ScrollView>(null);
+  const scrollViewRef = useRef<ScrollView>(null);
   const scrollToTop = () => {
     scrollViewRef.current?.scrollTo({ y: 0, animated: true });
   };
@@ -55,23 +68,25 @@ const Home: React.FC<PropsType> = (props) => {
   };
 
   const goToScreenChart = () => {
-    // if (isLoggedIn) {
+    if (isLoggedIn) {
       navigation.navigate("Bảng Xếp Hạng");
       scrollToTop();
-    // } else {
-      // setModalVisible(true);
-    // }
+    } else {
+      setModalVisible(true);
+    }
   };
 
   const goToScreenPoints = () => {
-    // if (isLoggedIn) {
+    if (isLoggedIn) {
       navigation.navigate("Điểm Thưởng Xanh");
       scrollToTop();
-    // } else {
-      // setModalVisible(true);
-    // }
+    } else {
+      setModalVisible(true);
+    }
   };
-
+  const hideModalSignOut = () => {
+    setModalVisibleSignOut(!modalVisibleSignOut);
+  };
   const goToScreenDescriptionWarning = () => {
     // navigation.navigate("WarningDescriptionScreen");
     scrollToTop();
@@ -89,6 +104,20 @@ const Home: React.FC<PropsType> = (props) => {
         break;
     }
   };
+  useEffect(() => {
+    if (
+      (isLoggedIn &&
+        dataUser &&
+        dataUser.statistical &&
+        dataUser.statistical.aquafina) ||
+      (dataUser.statistical?.other == 0 &&
+        dataUser.statistical?.aquafina == 0) ||
+      dataUser.point == 0
+    ) {
+      setModalVisibleStatistical(true);
+    }
+  }, [isLoggedIn, dataUser]);
+
   return (
     <View>
       <Header
@@ -100,6 +129,51 @@ const Home: React.FC<PropsType> = (props) => {
         eventCenter={goHome}
         checkLogin={true}
       />
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisibleStatistical}
+      >
+        <DialogStatistical
+          onPress={() => {
+            setModalVisibleStatistical(!modalVisibleStatistical);
+          }}
+          sumStatistical={dataUser?.point}
+          aquafina={dataUser?.statistical?.aquafina}
+          other={dataUser?.statistical?.other}
+        />
+      </Modal>
+      <Modal animationType="slide" transparent={true} visible={modalVisible}>
+        <DialogLogIn
+          onPress={() => {
+            setModalVisible(!modalVisible);
+          }}
+          onPressSignIn={() => {
+            setModalVisible(!modalVisible);
+            props.navigation.navigate("Login");
+          }}
+        />
+      </Modal>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisibleSignOut}
+      >
+        <DialogLogOut
+          onPress={() => {
+            setModalVisibleSignOut(!modalVisibleSignOut);
+          }}
+          onPressSignOut={() => {
+            hideModalSignOut();
+            setLoggedIn(false);
+            setDataUser({} as User);
+            navigation.navigate("Home");
+          }}
+          onPressCancel={() => {
+            setModalVisibleSignOut(!modalVisibleSignOut);
+          }}
+        />
+      </Modal>
       <ScrollView style={{ marginBottom: 55 }}
         showsVerticalScrollIndicator={false} ref={scrollViewRef}>
         <SlideBanner
@@ -109,17 +183,18 @@ const Home: React.FC<PropsType> = (props) => {
         />
         <SumBottle sumAqua={200000} sumOther={100000} />
         <Rating
-              checkLogin={isLoggedIn}
-              data={dataRating}
-              dataUser={dataRatingUser}
-              type={true}
-              onPressSignIn={() => {
-                navigation.navigate("Login");
-              }}
-              onPress={() => {
-                navigation.navigate("Bảng Xếp Hạng");
-              }}
-            />
+          checkLogin={isLoggedIn}
+          data={dataRating}
+          dataUser={dataRatingUser}
+          type={true}
+          onPressSignIn={() => {
+            navigation.navigate("Login");
+          }}
+          onPress={() => {
+            navigation.navigate("Bảng Xếp Hạng");
+          }}
+        />
+        <Carousel onPress={goToScreenPresent} check={false} />
         <Address onPress={goToScreenMap} uri={IMG_MAP} checkType={false} />
         <FooterMenu
           onClick1={goToScreenGreenWorld}

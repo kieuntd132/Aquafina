@@ -16,4 +16,12 @@ export const Colors = {
     R2: "#6F84F5",
     R3: "#57B7F5",
     BLUE_300: "rgba(102, 145, 214, 1)",
+    BG_MODAL: "rgba(0, 0, 0, 0.7)",
+    BACKGROUND_1: "#F0FAFF",
+    BACKGROUND_2: "#E8EDF2",
+    GREY_GREY: "#EAEAEC",
+    GREY_TEXT_400: "#535261",
+    YELLOW: "rgba(255, 184, 0, 1)",
+    GREY_RULES: "rgba(41, 43, 46, 0.8)",
+    ORANGE: "rgba(244, 111, 36, 1)",
 };

@@ -1,10 +1,13 @@
-import { View, Text, Image, Pressable, StyleSheet } from 'react-native'
+import { View, Text, Image, Pressable, StyleSheet, Modal } from 'react-native'
 import React from 'react'
 import { DrawerContentComponentProps, DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer'
 import Header from '../component/header/Header';
 import { ICON_AQUAFINA, ICON_AVATAR_LOGIN, ICON_CLOSE, ICON_HOME, ICON_LOGIN, ICON_LOGOUT, ICON_MENU1, ICON_MENU2, ICON_MENU3, ICON_MENU4, ICON_MENU5, ICON_MENU_1_FOCUS, ICON_MENU_2_FOCUS, ICON_MENU_3_FOCUS, ICON_MENU_4_FOCUS, ICON_MENU_5_FOCUS } from '../../../assets';
 import { Colors } from '../resource/value/Colors';
 import { AppContext } from '../shared-state/appContext/AppContext';
+import DialogLogIn from '../component/dialog/DialogLogIn';
+import DialogLogOut from '../component/dialog/DialogLogOut';
+import { User } from '../../domain/entity/User';
 
 type CustomDrawerContentProps = DrawerContentComponentProps
   & {
@@ -20,10 +23,20 @@ type CustomDrawerContentProps = DrawerContentComponentProps
 const CustomDrawerTop: React.FC<CustomDrawerContentProps> = (props) => {
   const { state, checkLogin, imageAvatar, textAccount, } = props;
   const { setLoggedIn, setDataUser } = React.useContext(AppContext);
+  const [modalVisible, setModalVisible] = React.useState(false);
+  const [modalVisibleSignOut, setModalVisibleSignOut] = React.useState(false);
   const hiddenItems = ["StackNavigation"];
   const filteredRoutes = state.routes.filter(
     (route: any) => !hiddenItems.includes(route.name)
   );
+  const hideModal = () => {
+    setModalVisible(!modalVisible);
+  };
+
+  const hideModalSignOut = () => {
+    setModalVisibleSignOut(!modalVisibleSignOut);
+  };
+
   // const handleItemPress = (route: string) => {
   //   if (route === "Điểm Thưởng Xanh") {
   //     // Xử lý logic trước khi chuyển hướng đến màn hình hạn chế
@@ -62,6 +75,37 @@ const CustomDrawerTop: React.FC<CustomDrawerContentProps> = (props) => {
   return (
     <View style={{ flex: 1 }}>
       <DrawerContentScrollView {...props}>
+      <Modal animationType="slide" transparent={true} visible={modalVisible}>
+          <DialogLogIn
+            onPress={() => {
+              hideModal();
+            }}
+            onPressSignIn={() => {
+              hideModal();
+              props.navigation.navigate("SignIn");
+            }}
+          />
+        </Modal>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisibleSignOut}
+        >
+          <DialogLogOut
+            onPress={() => {
+              setModalVisibleSignOut(!modalVisibleSignOut);
+            }}
+            onPressSignOut={() => {
+              hideModalSignOut();
+              setLoggedIn(false);
+              setDataUser({} as User);
+              props.navigation.closeDrawer();
+            }}
+            onPressCancel={() => {
+              setModalVisibleSignOut(!modalVisibleSignOut);
+            }}
+          />
+        </Modal>
         <Header
           checkLogin={checkLogin}
           iconCenter={ICON_AQUAFINA}
@@ -127,13 +171,12 @@ const CustomDrawerTop: React.FC<CustomDrawerContentProps> = (props) => {
             />
           </Pressable>
         ))}
-        {/* <DrawerItemList {...props} /> */}
       </DrawerContentScrollView>
-      {checkLogin ? (
+      {/* {checkLogin ? ( */}
         <View style={{ borderTopWidth: 1, padding: 20, borderTopColor: '#DEE1E2' }}>
           <Pressable
             onPress={() => {
-              props.navigation.navigate("Login");
+              setModalVisibleSignOut(true)
             }}
             style={{ flexDirection: 'row', alignItems: 'center' }}
           >
@@ -146,7 +189,7 @@ const CustomDrawerTop: React.FC<CustomDrawerContentProps> = (props) => {
             </Text>
           </Pressable>
         </View>
-      ) : (
+      {/* ) : (
         <View style={{ borderTopWidth: 1, padding: 20, borderTopColor: '#DEE1E2' }}>
           <Pressable
             onPress={() => {
@@ -163,7 +206,7 @@ const CustomDrawerTop: React.FC<CustomDrawerContentProps> = (props) => {
             </Text>
           </Pressable>
         </View>
-      )}
+      )} */}
     </View>
   )
 }
