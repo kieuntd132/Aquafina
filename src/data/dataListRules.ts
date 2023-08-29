@@ -24,6 +24,14 @@ export const dataListRules = [
         image: "https://firebasestorage.googleapis.com/v0/b/aquafina-27d2b.appspot.com/o/rl5.png?alt=media&token=1e8e8a6d-29b2-42ee-a6b0-c7d62e70f227"
     },
     {
+        key: "Voucher xem phim tại rạp chiếu phim Lotte",
+        title: "Voucher xem phim tại rạp chiếu phim Lotte",
+        quantity: 100,
+        method: "Trao ngẫu nhiên cho 100 người trong tổng số 200 người có điểm Aquafina cao nhất còn lại",
+        value: "50.000 đồng/ voucher",
+        image: "https://firebasestorage.googleapis.com/v0/b/aquafina-27d2b.appspot.com/o/rl7.png?alt=media&token=2058e053-7166-475f-ae20-40d7dee86bd9"
+    },
+    {
         key: "Túi Tote Aquafina x Headless",
         title: "Túi Tote\nAquafina x Headless",
         quantity: 6,

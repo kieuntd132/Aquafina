@@ -119,6 +119,7 @@ const RulesScreen: React.FC<PropsType> = (props) => {
                             fontFamily: "SVN-Gotham",
                             fontWeight: "400",
                             color: Colors.BLACK,
+                            lineHeight: 21,
                             fontSize: 12,
                         }}
                     >
@@ -130,6 +131,7 @@ const RulesScreen: React.FC<PropsType> = (props) => {
                             fontFamily: "SVN-Gotham",
                             fontWeight: "400",
                             color: Colors.BLACK,
+                            lineHeight: 21,
                             fontSize: 12,
                         }}
                     >
@@ -141,6 +143,7 @@ const RulesScreen: React.FC<PropsType> = (props) => {
                             fontFamily: "SVN-Gotham",
                             fontWeight: "400",
                             color: Colors.BLACK,
+                            lineHeight: 21,
                             fontSize: 12,
                         }}
                     >
@@ -242,6 +245,7 @@ const RulesScreen: React.FC<PropsType> = (props) => {
                         fontSize: 14,
                         textTransform: "none",
                         fontFamily: "SVN-Gotham",
+                        lineHeight: 21,
                         fontWeight: "bold",
                     }}
                     styleContainer={{
@@ -260,6 +264,7 @@ const RulesScreen: React.FC<PropsType> = (props) => {
                         fontSize: 13,
                         textTransform: "none",
                         fontFamily: "SVN-Gotham",
+                        lineHeight: 21,
                         fontWeight: "400",
                     }}
                     styleContainer={{
@@ -276,6 +281,7 @@ const RulesScreen: React.FC<PropsType> = (props) => {
                         fontSize: 14,
                         textTransform: "none",
                         fontFamily: "SVN-Gotham",
+                        lineHeight: 21,
                         fontWeight: "bold",
                     }}
                     styleContainer={{
@@ -293,6 +299,7 @@ const RulesScreen: React.FC<PropsType> = (props) => {
                         fontSize: 14,
                         textTransform: "none",
                         fontFamily: "SVN-Gotham",
+                        lineHeight: 21,
                         fontWeight: "400",
                         fontStyle: 'italic'
                     }}
@@ -310,6 +317,7 @@ const RulesScreen: React.FC<PropsType> = (props) => {
                         fontSize: 13,
                         textTransform: "none",
                         fontFamily: "SVN-Gotham",
+                        lineHeight: 21,
                         fontWeight: "400",
                     }}
                     styleContainer={{
@@ -389,6 +397,7 @@ const RulesScreen: React.FC<PropsType> = (props) => {
                             fontSize: 14,
                             textTransform: "none",
                             fontFamily: "SVN-Gotham",
+                            lineHeight: 21,
                             fontWeight: "bold",
                         }}
                         styleContainer={{
@@ -581,7 +590,8 @@ const RulesScreen: React.FC<PropsType> = (props) => {
                         textTransform: "none",
                         fontFamily: "SVN-Gotham",
                         fontWeight: "400",
-                        fontStyle: 'italic'
+                        fontStyle: 'italic',
+                        lineHeight: 21,
                     }}
                     styleContainer={{
                         flexDirection: "row",
@@ -590,14 +600,14 @@ const RulesScreen: React.FC<PropsType> = (props) => {
                     }}
                 />
                 <View style={{ marginHorizontal: 20 }}>
-                    <TextPlus children={text_9} style={{ marginBottom: 5 }} />
+                    <TextPlus children={text_9} style={{ marginBottom: 5, lineHeight:21 }} />
                     <TextPlus
                         children={text_10}
-                        style={{ marginTop: 10, marginBottom: 5 }}
+                        style={{ marginTop: 10, marginBottom: 5 , lineHeight:21}}
                     />
                     <TextPlus
                         children={text_11}
-                        style={{ marginTop: 10, marginBottom: 5 }}
+                        style={{ marginTop: 10, marginBottom: 5 , lineHeight:21}}
                     />
                     <TextView
                         title="3.	Quy định chung:
@@ -609,6 +619,7 @@ const RulesScreen: React.FC<PropsType> = (props) => {
                             textTransform: "none",
                             fontFamily: "SVN-Gotham",
                             fontWeight: "bold",
+                            lineHeight: 21,
                         }}
                         styleContainer={{
                             flexDirection: "row",
