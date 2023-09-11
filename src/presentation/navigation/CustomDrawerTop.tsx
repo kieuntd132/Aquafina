@@ -37,45 +37,30 @@ const CustomDrawerTop: React.FC<CustomDrawerContentProps> = (props) => {
     setModalVisibleSignOut(!modalVisibleSignOut);
   };
 
-  // const handleItemPress = (route: string) => {
-  //   if (route === "Điểm Thưởng Xanh") {
-  //     // Xử lý logic trước khi chuyển hướng đến màn hình hạn chế
-  //     if (checkLogin) {
-  //       props.navigation.navigate(route);
-  //     } else {
-  //       // setModalVisible(true);
-  //     }
-  //   } else if (route === "Bảng Xếp Hạng") {
-  //     if (checkLogin) {
-  //       props.navigation.navigate(route);
-  //     } else {
-  //       // setModalVisible(true);
-  //     }
-  //   } else {
-  //     // Chuyển hướng đến các màn hình khác
-  //     props.navigation.navigate(route);
-  //   }
-  // };
   const handleItemPress = (route: string) => {
     if (route === "Điểm Thưởng Xanh") {
       // Xử lý logic trước khi chuyển hướng đến màn hình hạn chế
-      
+      if (checkLogin) {
         props.navigation.navigate(route);
-      
-      
+      } else {
+        // setModalVisible(true);
+      }
     } else if (route === "Bảng Xếp Hạng") {
-      
+      if (checkLogin) {
         props.navigation.navigate(route);
-      
+      } else {
+        // setModalVisible(true);
+      }
     } else {
       // Chuyển hướng đến các màn hình khác
       props.navigation.navigate(route);
     }
   };
+
   return (
     <View style={{ flex: 1 }}>
       <DrawerContentScrollView {...props}>
-      <Modal animationType="slide" transparent={true} visible={modalVisible}>
+        <Modal animationType="slide" transparent={true} visible={modalVisible}>
           <DialogLogIn
             onPress={() => {
               hideModal();
@@ -120,12 +105,10 @@ const CustomDrawerTop: React.FC<CustomDrawerContentProps> = (props) => {
         <View style={{ marginStart: 16, marginVertical: 30 }}>
           <Image
             style={{ width: 60, height: 60, borderRadius: 6 }}
-            // source={{ uri: imageAvatar  }}
-            source={{ uri: ICON_AVATAR  }}
+            source={{ uri: imageAvatar }}
           />
           <Text style={StyleSheet.flatten(styles.styleTextAccount)}>
-            {/* {textAccount} */}
-            Nguyễn Thị Diễm Kiều
+            {textAccount}
           </Text>
         </View>
         {filteredRoutes.map((route: any, index: number) => (
@@ -172,7 +155,7 @@ const CustomDrawerTop: React.FC<CustomDrawerContentProps> = (props) => {
           </Pressable>
         ))}
       </DrawerContentScrollView>
-      {/* {checkLogin ? ( */}
+      {checkLogin ? (
         <View style={{ borderTopWidth: 1, padding: 20, borderTopColor: '#DEE1E2' }}>
           <Pressable
             onPress={() => {
@@ -189,7 +172,7 @@ const CustomDrawerTop: React.FC<CustomDrawerContentProps> = (props) => {
             </Text>
           </Pressable>
         </View>
-      {/* ) : (
+      ) : (
         <View style={{ borderTopWidth: 1, padding: 20, borderTopColor: '#DEE1E2' }}>
           <Pressable
             onPress={() => {
@@ -206,7 +189,7 @@ const CustomDrawerTop: React.FC<CustomDrawerContentProps> = (props) => {
             </Text>
           </Pressable>
         </View>
-      )} */}
+      )}
     </View>
   )
 }

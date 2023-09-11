@@ -80,24 +80,6 @@ const Charts: React.FC<PropsType> = (props) => {
     scrollToTop();
   };
 
-  // const goToScreenChart = () => {
-  //   // if (isLoggedIn) {
-  //   navigation.navigate("Bảng Xếp Hạng");
-  //   scrollToTop();
-  //   // } else {
-  //   // setModalVisible(true);
-  //   // }
-  // };
-
-  // const goToScreenPoints = () => {
-  //   // if (isLoggedIn) {
-  //   navigation.navigate("Điểm Thưởng Xanh");
-  //   scrollToTop();
-  //   // } else {
-  //   // setModalVisible(true);
-  //   // }
-  // };
-
   const goToScreenDescriptionWarning = () => {
     navigation.navigate("WarningScreen");
     scrollToTop();

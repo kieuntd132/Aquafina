@@ -79,24 +79,6 @@ const GreenMap: React.FC<PropsType> = (props) => {
     scrollToTop();
   };
 
-  // const goToScreenChart = () => {
-  //   // if (isLoggedIn) {
-  //   navigation.navigate("Bảng Xếp Hạng");
-  //   scrollToTop();
-  //   // } else {
-  //   // setModalVisible(true);
-  //   // }
-  // };
-
-  // const goToScreenPoints = () => {
-  //   // if (isLoggedIn) {
-  //   navigation.navigate("Điểm Thưởng Xanh");
-  //   scrollToTop();
-  //   // } else {
-  //   // setModalVisible(true);
-  //   // }
-  // };
-
   const goToScreenDescriptionWarning = () => {
     navigation.navigate("WarningScreen");
     scrollToTop();
@@ -146,7 +128,7 @@ const GreenMap: React.FC<PropsType> = (props) => {
       <ScrollView showsVerticalScrollIndicator={false} ref={scrollViewRef}>
         <Pressable
           onPress={() => {
-            // navigation.navigate("StackRVM");
+            navigation.navigate("Bản Đồ Xanh");
           }}
         >
           <ImageView uri={W_2} imageStyle={{ height: 700 }} />
@@ -157,7 +139,6 @@ const GreenMap: React.FC<PropsType> = (props) => {
           imageStyle={{
             height: 600,
             width: Dimensions.get("window").width * 1.2,
-            // resizeMode: "contain",
             resizeMode: "stretch",
           }}
           viewStyle={{ marginStart: 6 }}

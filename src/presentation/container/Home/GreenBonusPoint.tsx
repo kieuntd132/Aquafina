@@ -81,11 +81,11 @@ const GreenBonusPoint: React.FC<PropsType> = (props) => {
   const [phone, setPhone] = useState<string | undefined>("0943975890");
   const [point, setPoint] = useState<string | undefined>("150");
 
-  // useEffect(() => {
-  //   setName(dataUser.name);
-  //   setPhone(dataUser.phone);
-  //   setPoint(dataUser.point + "");
-  // }, [dataUser]);
+  useEffect(() => {
+    setName(dataUser.name);
+    setPhone(dataUser.phone);
+    setPoint(dataUser.point + "");
+  }, [dataUser]);
 
 
   return (

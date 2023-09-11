@@ -102,7 +102,6 @@ const Login: React.FC<PropsType> = (props) => {
                     title="Đăng nhập"
                     backgroundImage={BACKGROUND_BUTTON_BLUE}
                     styleText={{ color: Colors.WHITE }}
-                    // onPress={() => goScreenOTP(value)}
                     onPress={() => goScreenOTP(value)}
                 />
                 <TextView title="Hoặc" textStyle={styles.textOr} />
