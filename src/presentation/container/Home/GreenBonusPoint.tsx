@@ -77,7 +77,7 @@ const GreenBonusPoint: React.FC<PropsType> = (props) => {
   };
 
 
-  const [name, setName] = useState<string | undefined>("Lê Quỳnh Ái Vân");
+  const [name, setName] = useState<string | undefined>("Nguyễn Thị Diễm Kiều");
   const [phone, setPhone] = useState<string | undefined>("0943975890");
   const [point, setPoint] = useState<string | undefined>("150");
 

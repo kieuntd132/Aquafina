@@ -2,7 +2,7 @@ import { View, Text, Image, Pressable, StyleSheet, Modal } from 'react-native'
 import React from 'react'
 import { DrawerContentComponentProps, DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer'
 import Header from '../component/header/Header';
-import { ICON_AQUAFINA, ICON_AVATAR_LOGIN, ICON_CLOSE, ICON_HOME, ICON_LOGIN, ICON_LOGOUT, ICON_MENU1, ICON_MENU2, ICON_MENU3, ICON_MENU4, ICON_MENU5, ICON_MENU_1_FOCUS, ICON_MENU_2_FOCUS, ICON_MENU_3_FOCUS, ICON_MENU_4_FOCUS, ICON_MENU_5_FOCUS } from '../../../assets';
+import { ICON_AQUAFINA, ICON_AVATAR, ICON_AVATAR_LOGIN, ICON_CLOSE, ICON_HOME, ICON_LOGIN, ICON_LOGOUT, ICON_MENU1, ICON_MENU2, ICON_MENU3, ICON_MENU4, ICON_MENU5, ICON_MENU_1_FOCUS, ICON_MENU_2_FOCUS, ICON_MENU_3_FOCUS, ICON_MENU_4_FOCUS, ICON_MENU_5_FOCUS } from '../../../assets';
 import { Colors } from '../resource/value/Colors';
 import { AppContext } from '../shared-state/appContext/AppContext';
 import DialogLogIn from '../component/dialog/DialogLogIn';
@@ -121,11 +121,11 @@ const CustomDrawerTop: React.FC<CustomDrawerContentProps> = (props) => {
           <Image
             style={{ width: 60, height: 60, borderRadius: 6 }}
             // source={{ uri: imageAvatar  }}
-            source={{ uri: ICON_AVATAR_LOGIN  }}
+            source={{ uri: ICON_AVATAR  }}
           />
           <Text style={StyleSheet.flatten(styles.styleTextAccount)}>
             {/* {textAccount} */}
-            Lê Quỳnh Ái Vân
+            Nguyễn Thị Diễm Kiều
           </Text>
         </View>
         {filteredRoutes.map((route: any, index: number) => (
